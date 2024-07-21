@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\MonitoringController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,9 +25,12 @@ Route::group(['middleware' => ['auth']], function () {
     // Home
     Route::group(['prefix' => 'home', 'as' => 'home.'], function () {
         Route::get('/', [HomeController::class, 'index'])->name('index');
+
         Route::get('/entry', [HomeController::class, 'entry'])->name('entry');
+
         Route::get('/update', [HomeController::class, 'update'])->name('update');
-        Route::get('/monitoring', [HomeController::class, 'monitoring'])->name('monitoring');
+
+        Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring');
     });
 
     Route::group(['middleware' => ['role:Administrator']], function () {
