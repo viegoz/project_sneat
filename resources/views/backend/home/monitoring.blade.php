@@ -52,7 +52,6 @@
                             <th>Kinerja 2023</th>
                             <th>Status</th>
                             <th>Keterangan</th>
-                            <th>Tanggal Edit</th>
                             <th>Tanggal Submit Surat</th>
                         </tr>
                     </thead>
@@ -83,7 +82,6 @@
                                     <td>{{ $item->kinerja_2023 }}</td>
                                     <td>{{ $item->status }}</td>
                                     <td>{{ $item->keterangan }}</td>
-                                    <td>{{ $item->tanggal_edit }}</td>
                                     <td>{{ $item->tanggal_submit_surat }}</td>
                                 </tr>
                             @endforeach
