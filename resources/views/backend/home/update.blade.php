@@ -36,18 +36,40 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="mb-3">
-                        <label for="tanggal_edit" class="form-label">Tanggal Edit</label>
-                        <input type="date" class="form-control" name="tanggal_edit" value="{{ \Carbon\Carbon::now()->toDateString() }}" readonly>
+                        <label for="tanggal_edit" class="form-label">Tanggal NDE</label>
+                        <input type="text" class="form-control" name="tanggal_submit_surat" id="SubmitSurat" value="{{ $data->created_at ?? ''}}" readonly>
                     </div>
+
                     <div class="mb-3">
                         <label for="perihal" class="form-label">Perihal</label>
-                        <input type="text" class="form-control" name="perihal" id="perihalField" value="{{ $data->perihal ?? '' }}">
+                        <input type="text" class="form-control" name="perihal" id="perihalField" value="{{ $data->perihal ?? '' }}" readonly>
                     </div>
+
+                    
+                    <h6 class="card-title">Balasan</h6>
+
+                    <div class="mb-3">
+                        <label for="Nomor_NDE_Balasan" class="form-label">Nomor NDE Balasan</label>
+                        <input type="text" class="form-control" name="nomorNdeBalasan" id="...">
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for = "Tanggal_NDE_Balasan" class = "form-label">Tanggal NDE Balasan</label>
+                        <input type = "date" class = "form-control" name = "TanggalNDEBalasan" value="{{ \Carbon\Carbon::now()->toDateString() }}" readonly>
+                    </div>
+
+                    <div class = "mb-3">
+                        <label for = "PerihalBalasan" class = "form-label">Perihal Balasan</label>
+                        <input type = "text" class = "form-control" name = "PerihalBalasan" id =  "...">
+                    </div>
+
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
                         <input type="text" class="form-control" name="keterangan" value="{{ $data->keterangan ?? '' }}">
                     </div>
+
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select class="form-control" name="status">
@@ -55,11 +77,9 @@
                             <option value="Ditolak" {{ isset($data) && $data->status == 'Ditolak' ? 'selected' : '' }}>Ditolak</option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="nomor_nde_balasan" class="form-label">Nomor NDE Balasan</label>
-                        <input type="text" class="form-control" id="nomorNdeBalasan" readonly>
-                    </div>
+
                     <button type="submit" class="btn btn-primary">UPDATE</button>
+                    
                 </form>
             </div>
         </div>
@@ -77,6 +97,7 @@
                         data: { id: selectedId },
                         success: function(response) {
                             $('#perihalField').val(response.perihal);
+                            $('#SubmitSurat').val(response.created_at);
                             $('#nomorNdeBalasan').val(response.nomor_nde + ' - ' + response.tanggal_submit_surat + ' - ' + response.perihal);
                             $('#updateForm').attr('action', '{{ url("home/update") }}/' + selectedId);
                         }
