@@ -30,7 +30,7 @@
                     </a>
                 </li>
                 <li class="menu-item {{ request()->is('home/update') ? 'active' : '' }}">
-                    <a href="{{ route('home.update') }}" class="menu-link">
+                    <a href="{{ route('home.update.edit') }}" class="menu-link">
                         <div data-i18n="Update">Update</div>
                     </a>
                 </li>

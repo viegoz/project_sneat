@@ -1,5 +1,5 @@
+<!-- resources/views/partials/navbar.blade.php -->
 <nav class="layout-navbar container-xxl navbar navbar-expand-xl navbar-detached align-items-center bg-navbar-theme" id="layout-navbar">
-
     <div class="layout-menu-toggle navbar-nav align-items-xl-center me-3 me-xl-0   d-xl-none ">
         <a class="nav-item nav-link px-0 me-xl-4" href="javascript:void(0)">
             <i class="bx bx-menu bx-sm"></i>
@@ -12,42 +12,14 @@
         <div class="navbar-nav align-items-center">
             <div class="nav-item d-flex align-items-center">
                 <i class="bx bx-search fs-4 lh-0"></i>
-                <input type="text" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..." />
+                <form action="{{ route('search') }}" method="GET" style="display: flex;">
+                    <input type="text" name="query" class="form-control border-0 shadow-none ps-1 ps-sm-2" placeholder="Search..." />
+                </form>
             </div>
         </div>
         <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
-
-            <!-- Language -->
-            <li class="nav-item dropdown-language dropdown me-2 me-xl-0">
-                <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <i class='bx bx-globe bx-sm'></i>
-                </a>
-                <ul class="dropdown-menu dropdown-menu-end">
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="en" data-text-direction="ltr">
-                            <span class="align-middle">English</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="fr" data-text-direction="ltr">
-                            <span class="align-middle">French</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="ar" data-text-direction="rtl">
-                            <span class="align-middle">Arabic</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="dropdown-item" href="javascript:void(0);" data-language="de" data-text-direction="ltr">
-                            <span class="align-middle">German</span>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            <!-- /Language -->
 
             <!-- User -->
             <li class="nav-item navbar-dropdown dropdown-user dropdown">

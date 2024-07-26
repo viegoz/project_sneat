@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB; // Add this line to import the DB facade
 
 class HomeController extends Controller
 {
@@ -14,7 +15,8 @@ class HomeController extends Controller
 
     public function entry()
     {
-        return view('backend.home.entry');
+        $regionals = DB::table('referensi')->distinct()->pluck('regional');
+        return view('backend.home.entry', compact('regionals'));
     }
 
     public function update()
