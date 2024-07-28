@@ -25,7 +25,8 @@ class DataController extends Controller
             'perihal' => 'required|string|max:255',
             'keterangan' => 'required|string|max:255',
             'status' => 'required|string|in:Diterima,Ditolak',
-            'tanggal_edit' => 'required|date',
+            'tanggal_submit_surat' => 'required|date',
+            'nomor_nde' => 'required|string|max:255'
         ]);
 
         $data = Entry::find($id);
@@ -33,12 +34,15 @@ class DataController extends Controller
             return redirect()->route('entry')->with('error', 'Data tidak ditemukan');
         }
 
+        Histori::where('id_kantor', $data->id_kantor)->delete();
+
         Histori::create($data->toArray());
 
         $data->perihal = $request->perihal;
         $data->keterangan = $request->keterangan;
         $data->status = $request->status;
-        $data->tanggal_edit = $request->tanggal_edit ?? Carbon::now()->toDateString();
+        $data->tanggal_submit_surat = $request->tanggal_submit_surat ?? Carbon::now()->toDateString();
+        $data->nomor_nde = $request->nomor_nde;
         $data->save();
 
         return redirect()->route('home.update.edit', $data->id)->with('success', 'Berhasil melakukan UPDATE');
@@ -52,6 +56,7 @@ class DataController extends Controller
                 'perihal' => $data->perihal, 
                 'nomor_nde' => $data->nomor_nde,
                 'tanggal_submit_surat' => $data->tanggal_submit_surat,
+                'keterangan' => $data->keterangan
             ]);
         }
         return response()->json([], 404);

@@ -42,5 +42,6 @@ class Entry extends Model
         'kinerja_2023_jaskug',
         'kinerja_2023_ritel',
         'kinerja_2023_biaya',
+        'tanggal_submit_surat',
     ];
 }

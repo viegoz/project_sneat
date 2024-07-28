@@ -89,6 +89,8 @@ class EntryController extends Controller
         unset($data['kinerja_2023_ritel']);
         unset($data['kinerja_2023_biaya']);
 
+        $data['tanggal_submit_surat'] = now();
+
         Entry::create($data);
 
         return redirect()->route('home.entry')->with('success', 'Data berhasil disimpan.');
