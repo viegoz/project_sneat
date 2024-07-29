@@ -6,7 +6,7 @@
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
             <div class="card-header">
-                <h5 class="card-title">Update Form</h5>
+                <h5 class="card-title">Update</h5>
             </div>
             <div class="card-body">
                 @if(session('success'))
@@ -36,18 +36,40 @@
                             @endforeach
                         </select>
                     </div>
+
                     <div class="mb-3">
-                        <label for="tanggal_edit" class="form-label">Tanggal Edit</label>
-                        <input type="date" class="form-control" name="tanggal_edit" value="{{ \Carbon\Carbon::now()->toDateString() }}" readonly>
+                        <label for="tanggalSubmitSurat" class="form-label">Tanggal NDE</label>
+                        <input type="text" class="form-control" name="tanggal_submit_surat" id="SubmitSurat" value="{{ $data->tanggal_submit_surat ?? ''}}" readonly>
                     </div>
+
                     <div class="mb-3">
                         <label for="perihal" class="form-label">Perihal</label>
-                        <input type="text" class="form-control" name="perihal" id="perihalField" value="{{ $data->perihal ?? '' }}">
+                        <input type="text" class="form-control" name="perihal" id="perihalField" value="{{ $data->perihal ?? '' }}" readonly>
                     </div>
+
+                    
+                    <h6 class="card-title">Balasan</h6>
+
+                    <div class="mb-3">
+                        <label for="nomor_nde" class="form-label">Nomor NDE Balasan</label>
+                        <input type="text" class="form-control" name="nomor_nde" id="nomor_nde" required>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for = "tanggal_submit_surat" class = "form-label">Tanggal NDE Balasan</label>
+                        <input type = "date" class = "form-control" name = "tanggal_submit_surat" value="{{ \Carbon\Carbon::now()->toDateString() }}" readonly>
+                    </div>
+
+                    <div class = "mb-3">
+                        <label for = "perihal" class = "form-label">Perihal Balasan</label>
+                        <input type = "text" class = "form-control" name = "perihal" required>
+                    </div>
+
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
-                        <input type="text" class="form-control" name="keterangan" value="{{ $data->keterangan ?? '' }}">
+                        <input type="text" class="form-control" name="keterangan" id="KeteranganValue" value="{{ $data->keterangan ?? '' }}" required>
                     </div>
+
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
                         <select class="form-control" name="status">
@@ -55,11 +77,9 @@
                             <option value="Ditolak" {{ isset($data) && $data->status == 'Ditolak' ? 'selected' : '' }}>Ditolak</option>
                         </select>
                     </div>
-                    <div class="mb-3">
-                        <label for="nomor_nde_balasan" class="form-label">Nomor NDE Balasan</label>
-                        <input type="text" class="form-control" id="nomorNdeBalasan" readonly>
-                    </div>
+
                     <button type="submit" class="btn btn-primary">UPDATE</button>
+                    
                 </form>
             </div>
         </div>
@@ -77,7 +97,9 @@
                         data: { id: selectedId },
                         success: function(response) {
                             $('#perihalField').val(response.perihal);
-                            $('#nomorNdeBalasan').val(response.nomor_nde + ' - ' + response.tanggal_submit_surat + ' - ' + response.perihal);
+                            $('#SubmitSurat').val(response.tanggal_submit_surat);
+                            // $('#nomorNdeBalasan').val(response.nomor_nde + ' - ' + response.created_at + ' - ' + response.perihal);
+                            $('#KeteranganValue').val(response.keterangan);
                             $('#updateForm').attr('action', '{{ url("home/update") }}/' + selectedId);
                         }
                     });

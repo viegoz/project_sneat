@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+
     Route::group(['middleware' => ['role:Administrator']], function () {
         Route::group(['prefix' => 'users',  'as' => 'users.'], function () {
             Route::resource('/', UserController::class);

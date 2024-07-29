@@ -5,7 +5,7 @@
             <span class="app-brand-logo demo">
                 {{-- Logo Here --}}
             </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">Sneat</span>
+            <span class="app-brand-text demo menu-text fw-bold ms-2">Pos Indonesia</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
@@ -17,7 +17,7 @@
 
     <ul class="py-1 menu-inner">
 
-        {{-- Admin --}}
+        
         <li class="menu-item {{ request()->is('home') ? 'open' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
