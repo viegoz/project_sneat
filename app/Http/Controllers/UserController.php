@@ -5,9 +5,37 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
+    /**
+     * Update the profile picture of the authenticated user.
+     */
+    public function updateProfilePicture(Request $request)
+    {
+        $request->validate([
+            'profile_picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        $user = Auth::user();
+        if ($request->file('profile_picture')) {
+            $path = $request->file('profile_picture')->store('profile_pictures', 'public');
+
+            // Delete old profile picture if it exists
+            if ($user->profile_picture) {
+                Storage::disk('public')->delete($user->profile_picture);
+            }
+
+            // Save new profile picture path to user
+            $user->profile_picture = $path;
+            $user->save();
+        }
+
+        return redirect()->route('profile')->with('success', 'Profile picture updated successfully.');
+    }
+
     /**
      * Display a listing of the resource.
      */

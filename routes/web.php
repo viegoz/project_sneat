@@ -34,6 +34,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/search', [SearchController::class, 'search'])->name('search');
 
+    Route::get('/profile', function () {
+        return view('profile');
+    })->name('profile')->middleware('auth'); // Add this line for profile
+
+    Route::post('/profile/update-picture', [UserController::class, 'updateProfilePicture'])->name('profile.updatePicture')->middleware('auth');
+
     Route::group(['middleware' => ['role:Administrator']], function () {
         Route::group(['prefix' => 'users',  'as' => 'users.'], function () {
             Route::resource('/', UserController::class);
