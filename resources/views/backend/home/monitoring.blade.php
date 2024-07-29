@@ -27,6 +27,7 @@
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Filter</button>
+                    <a href="{{ route('monitoring.export') }}" class="btn btn-success">Download Excel</a>
                 </form>
             </div>
             <div class="table-responsive text-nowrap">

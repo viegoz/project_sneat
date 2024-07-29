@@ -1,17 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\EntryController;
+use App\Exports\MonitoringExport;
+use App\Models\Monitoring;
 use App\Http\Controllers\MonitoringController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\SearchController;
+use App\Models\Entry;
 
-/// Landing Page
+// Landing Page - redirect to login if user is not authenticated
 Route::get('/', function () {
-    return view('frontend.welcome');
-})->name('/');
+    return redirect()->route('login');
+})->middleware('guest')->name('/');
 
 Route::group(['middleware' => ['auth']], function () {
     // Home
@@ -26,7 +30,16 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/monitoring', [MonitoringController::class, 'index'])->name('monitoring');
         Route::get('/update', [DataController::class, 'edit'])->name('update.edit');
         Route::put('/update/{id}', [DataController::class, 'update'])->name('update.update');
+        Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
+        Route::post('login', [LoginController::class, 'login']);
+        Route::post('logout', [LoginController::class, 'logout'])->name('logout');
     });
+
+    Route::get('/monitoring/export', function () {
+        $data = Entry::all();
+        $export = new \App\Exports\MonitoringExport($data);
+        return $export->export('xlsx');
+    })->name('monitoring.export');
 
     Route::post('/home/submit', [DataController::class, 'submit'])->name('submit'); 
     Route::get('/home/get-perihal-by-nde', [DataController::class, 'getPerihalByNde'])->name('getPerihalByNde');   
