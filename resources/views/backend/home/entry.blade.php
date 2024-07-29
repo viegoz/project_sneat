@@ -160,6 +160,7 @@
             }
         });
 
+        
         function calculateKinerja(year) {
             var kurlog = parseFloat($(`#kinerja_${year}_kurlog`).val()) || 0;
             var jaskug = parseFloat($(`#kinerja_${year}_jaskug`).val()) || 0;
