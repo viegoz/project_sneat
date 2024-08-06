@@ -3,6 +3,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Entry;
+use App\Exports\MonitoringExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class MonitoringController extends Controller
 {
@@ -36,5 +38,16 @@ class MonitoringController extends Controller
 
         // Mengirim data ke view monitoring
         return view('backend.home.monitoring', ['data' => $data]);
+    }
+
+    public function export(Request $request)
+    {
+        // Get the filtered data for export
+        $month = $request->input('month');
+        $year = $request->input('year');
+        $regional = $request->input('regional');
+        $status = $request->input('status');
+
+        return Excel::download(new MonitoringExport($month, $year, $regional, $status), 'monitoring.xlsx');
     }
 }

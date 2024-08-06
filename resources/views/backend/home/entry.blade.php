@@ -79,36 +79,72 @@
                         <label for="tmt" class="form-label">TMT</label>
                         <input type="date" class="form-control" id="tmt" name="tmt" required>
                     </div>
+                    
                     <div class="mb-3">
                         <label for="sd" class="form-label">SD</label>
                         <input type="date" class="form-control" id="sd" name="sd" required>
+                        <div class="mb-3">
+                        <label for="kinerja_2021" class="form-label">Kinerja 2021</label>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2021_kurlog" name="kinerja_2021_kurlog" placeholder="Kurlog" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2021_jaskug" name="kinerja_2021_jaskug" placeholder="Jaskug" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2021_ritel" name="kinerja_2021_ritel" placeholder="Ritel" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2021_biaya" name="kinerja_2021_biaya" placeholder="Biaya" required>
+                            </div>
+                        </div>
                     </div>
                     <div class="mb-3">
-                    <label for="kinerja_2021" class="form-label">Kinerja 1</label>
-                    <input type="text" class="form-control" id="kinerja_2021_kurlog" name="kinerja_2021_kurlog" placeholder="Kurlog" required>
-                    <input type="text" class="form-control" id="kinerja_2021_jaskug" name="kinerja_2021_jaskug" placeholder="Jaskug" required>
-                    <input type="text" class="form-control" id="kinerja_2021_ritel" name="kinerja_2021_ritel" placeholder="Ritel" required>
-                    <input type="text" class="form-control" id="kinerja_2021_biaya" name="kinerja_2021_biaya" placeholder="Biaya" required>
-                    <input type="text" class="form-control" id="kinerja_2021_total" name="kinerja_2021_total" placeholder="Total" readonly>
-                </div>
+                        <input type="text" class="form-control" id="kinerja_2021_total" name="kinerja_2021_total" placeholder="Total" readonly>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="kinerja_2022" class="form-label">Kinerja 2</label>
-                    <input type="text" class="form-control" id="kinerja_2022_kurlog" name="kinerja_2022_kurlog" placeholder="Kurlog" required>
-                    <input type="text" class="form-control" id="kinerja_2022_jaskug" name="kinerja_2022_jaskug" placeholder="Jaskug" required>
-                    <input type="text" class="form-control" id="kinerja_2022_ritel" name="kinerja_2022_ritel" placeholder="Ritel" required>
-                    <input type="text" class="form-control" id="kinerja_2022_biaya" name="kinerja_2022_biaya" placeholder="Biaya" required>
-                    <input type="text" class="form-control" id="kinerja_2022_total" name="kinerja_2022_total" placeholder="Total" readonly>
-                </div>
+                    <div class="mb-3">
+                        <label for="kinerja_2022" class="form-label">Kinerja 2022</label>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2022_kurlog" name="kinerja_2022_kurlog" placeholder="Kurlog" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2022_jaskug" name="kinerja_2022_jaskug" placeholder="Jaskug" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2022_ritel" name="kinerja_2022_ritel" placeholder="Ritel" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2022_biaya" name="kinerja_2022_biaya" placeholder="Biaya" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="kinerja_2022_total" name="kinerja_2022_total" placeholder="Total" readonly>
+                    </div>
 
-                <div class="mb-3">
-                    <label for="kinerja_2023" class="form-label">Kinerja 3</label>
-                    <input type="text" class="form-control" id="kinerja_2023_kurlog" name="kinerja_2023_kurlog" placeholder="Kurlog" required>
-                    <input type="text" class="form-control" id="kinerja_2023_jaskug" name="kinerja_2023_jaskug" placeholder="Jaskug" required>
-                    <input type="text" class="form-control" id="kinerja_2023_ritel" name="kinerja_2023_ritel" placeholder="Ritel" required>
-                    <input type="text" class="form-control" id="kinerja_2023_biaya" name="kinerja_2023_biaya" placeholder="Biaya" required>
-                    <input type="text" class="form-control" id="kinerja_2023_total" name="kinerja_2023_total" placeholder="Total" readonly>
-                </div>
+                    <div class="mb-3">
+                        <label for="kinerja_2023" class="form-label">Kinerja 2023</label>
+                        <div class="row">
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2023_kurlog" name="kinerja_2023_kurlog" placeholder="Kurlog" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2023_jaskug" name="kinerja_2023_jaskug" placeholder="Jaskug" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2023_ritel" name="kinerja_2023_ritel" placeholder="Ritel" required>
+                            </div>
+                            <div class="col">
+                                <input type="text" class="form-control" id="kinerja_2023_biaya" name="kinerja_2023_biaya" placeholder="Biaya" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" id="kinerja_2023_total" name="kinerja_2023_total" placeholder="Total" readonly>
+                    </div>
 
                 <button type="submit" class="btn btn-primary">Simpan</button>
             </form>
