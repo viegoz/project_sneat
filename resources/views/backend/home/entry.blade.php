@@ -195,6 +195,7 @@
                 });
             }
         });
+        
 
         function calculateKinerja(year) {
             var kurlog = parseFloat($(`#kinerja_${year}_kurlog`).val()) || 0;
