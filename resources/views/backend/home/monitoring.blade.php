@@ -11,22 +11,23 @@
                     <div class="row mb-3">
                         <div class="col-md-3">
                             <label for="month" class="form-label">Bulan</label>
-                            <input type="number" class="form-control" name="month" id="month" placeholder="MM" min="1" max="12">
+                            <input type="number" class="form-control" name="month" id="month" placeholder="MM" min="1" max="12" value="{{ request('month') }}">
                         </div>
                         <div class="col-md-3">
                             <label for="year" class="form-label">Tahun</label>
-                            <input type="number" class="form-control" name="year" id="year" placeholder="YYYY">
+                            <input type="number" class="form-control" name="year" id="year" placeholder="YYYY" value="{{ request('year') }}">
                         </div>
                         <div class="col-md-3">
                             <label for="regional" class="form-label">Regional</label>
-                            <input type="text" class="form-control" name="regional" id="regional" placeholder="Regional">
+                            <input type="text" class="form-control" name="regional" id="regional" placeholder="Regional" value="{{ request('regional') }}">
                         </div>
                         <div class="col-md-3">
                             <label for="status" class="form-label">Status</label>
-                            <input type="text" class="form-control" name="status" id="status" placeholder="Status">
+                            <input type="text" class="form-control" name="status" id="status" placeholder="Status" value="{{ request('status') }}">
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Filter</button>
+                    <a href="{{ route('monitoring.export', request()->only(['month', 'year', 'regional', 'status'])) }}" class="btn btn-success">Download Excel</a>
                 </form>
             </div>
             <div class="table-responsive text-nowrap">
