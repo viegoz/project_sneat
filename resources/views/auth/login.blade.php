@@ -5,7 +5,17 @@
     <div class="card">
         <div class="card-body">
             {{-- Logo --}}
-            @include('auth.partials.logo')
+            <div class="app-brand demo d-flex justify-content-center align-items-center">
+                <a href="{{ route('/') }}" class="app-brand-link">
+                    <span class="app-brand-logo demo">
+                        <img src="{{ asset('assets/img/posindnew.png') }}" alt="Logo" style="width: 100px; height: auto;">
+                    </span>
+                </a>
+        
+                <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                    <i class="align-middle bx bx-chevron-left bx-sm"></i>
+                </a>
+            </div>
             {{-- !Logo --}}
             <p class="mb-3">Please sign-in to your account first</p>
 
@@ -39,21 +49,10 @@
                     <button class="btn btn-primary d-grid w-100" type="submit">Sign in</button>
                 </div>
             </form>
-
-            <div class="mb-3">
-                <div class="row">
-                    <div class="col-md">
-                        <a class="btn btn-outline-dark w-100 star-bg" href="{{ route('auth.google') }}">
-                            <img width="20px" style="margin-bottom:3px; margin-right:5px" alt="Google sign-in" src="{{ asset('assets/img/icons/google-96.png') }}" />
-                            Signin with Google
-                        </a>
-                    </div>
-                </div>
-            </div>
         </div>
 
         <p class="text-center">
-            <span>New on our platform?</span>
+            <span>Do not have account?</span>
             <a href="{{ route('register') }}">
                 <span>Create an account</span>
             </a>

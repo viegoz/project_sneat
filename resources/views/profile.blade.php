@@ -10,7 +10,7 @@
             </div>
             <div class="card-body text-center">
                 <div class="profile-avatar mb-4">
-                    <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'assets/img/avatars/1.png') }}" alt="Profile Picture" class="w-px-150 h-auto rounded-circle">
+                    <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'assets/img/avatars/1.png') }}" alt="Profile Picture" class="rounded-circle" style="width: 150px; height: 150px;">
                 </div>
                 <div class="profile-details">
                     <h3>{{ Auth::user()->name }}</h3>

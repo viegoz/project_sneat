@@ -1,11 +1,8 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
-    <div class="app-brand demo">
-
+<div class="app-brand demo d-flex justify-content-center align-items-center">
         <a href="{{ route('/') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
-                {{-- Logo Here --}}
-            </span>
-            <span class="app-brand-text demo menu-text fw-bold ms-2">Pos Indonesia</span>
+                <img src="{{ asset('assets/img/posindnew.png') }}" alt="Logo" style="width: 70px; height: auto;" >
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">

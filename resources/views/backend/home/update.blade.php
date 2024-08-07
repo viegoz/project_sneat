@@ -30,7 +30,7 @@
                         <select class="form-control" name="nomor_nde" id="nomorNdeSelect">
                             <option value="">--Pilih Nomor NDE--</option>
                             @foreach($allData as $item)
-                                <option value="{{ $item->id }}" {{ isset($data) && $data->nomor_nde == $item->nomor_nde ? 'selected' : '' }}>
+                                <option value="{{ $item->nomor_nde }}" {{ isset($data) && $data->nomor_nde == $item->nomor_nde ? 'selected' : '' }}>
                                     {{ $item->nomor_nde }}
                                 </option>
                             @endforeach
@@ -47,22 +47,21 @@
                         <input type="text" class="form-control" name="perihal" id="perihalField" value="{{ $data->perihal ?? '' }}" readonly>
                     </div>
 
-                    
                     <h6 class="card-title">Balasan</h6>
 
                     <div class="mb-3">
-                        <label for="nomor_nde" class="form-label">Nomor NDE Balasan</label>
+                        <label for="nomor_nde_balasan" class="form-label">Nomor NDE Balasan</label>
                         <input type="text" class="form-control" name="nomor_nde" id="nomor_nde" required>
                     </div>
                     
                     <div class="mb-3">
-                        <label for = "tanggal_submit_surat" class = "form-label">Tanggal NDE Balasan</label>
-                        <input type = "date" class = "form-control" name = "tanggal_submit_surat" value="{{ \Carbon\Carbon::now()->toDateString() }}" readonly>
+                        <label for="tanggal_submit_surat_balasan" class="form-label">Tanggal NDE Balasan</label>
+                        <input type="date" class="form-control" name="tanggal_submit_surat" value="{{ \Carbon\Carbon::now()->toDateString() }}" readonly>
                     </div>
 
-                    <div class = "mb-3">
-                        <label for = "perihal" class = "form-label">Perihal Balasan</label>
-                        <input type = "text" class = "form-control" name = "perihal" required>
+                    <div class="mb-3">
+                        <label for="perihal_balasan" class="form-label">Perihal Balasan</label>
+                        <input type="text" class="form-control" name="perihal" required>
                     </div>
 
                     <div class="mb-3">
@@ -86,26 +85,34 @@
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
     <script>
         $(document).ready(function() {
+            $('#nomorNdeSelect').select2({
+                tags: true,
+                width: '100%',
+                placeholder: "--Pilih Nomor NDE--",
+                allowClear: true
+            });
+
             $('#nomorNdeSelect').change(function() {
-                var selectedId = $(this).val();
-                if (selectedId) {
+                var selectedNomorNde = $(this).val();
+                if (selectedNomorNde) {
                     $.ajax({
-                        url: '{{ route("getPerihalByNde") }}',
+                        url: '{{ route("getPerihalByNdeInput") }}',
                         type: 'GET',
-                        data: { id: selectedId },
+                        data: { nomor_nde: selectedNomorNde },
                         success: function(response) {
                             $('#perihalField').val(response.perihal);
                             $('#SubmitSurat').val(response.tanggal_submit_surat);
-                            // $('#nomorNdeBalasan').val(response.nomor_nde + ' - ' + response.created_at + ' - ' + response.perihal);
                             $('#KeteranganValue').val(response.keterangan);
-                            $('#updateForm').attr('action', '{{ url("home/update") }}/' + selectedId);
+                            $('#updateForm').attr('action', '{{ url("home/update") }}/' + response.id);
                         }
                     });
                 } else {
                     $('#perihalField').val('');
-                    $('#nomorNdeBalasan').val('');
+                    $('#SubmitSurat').val('');
+                    $('#KeteranganValue').val('');
                     $('#updateForm').attr('action', '{{ route("home.update.update", "") }}');
                 }
             });

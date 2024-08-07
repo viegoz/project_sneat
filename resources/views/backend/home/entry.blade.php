@@ -198,10 +198,10 @@
         
 
         function calculateKinerja(year) {
-            var kurlog = parseFloat($(`#kinerja_${year}_kurlog`).val()) || 0;
-            var jaskug = parseFloat($(`#kinerja_${year}_jaskug`).val()) || 0;
-            var ritel = parseFloat($(`#kinerja_${year}_ritel`).val()) || 0;
-            var biaya = parseFloat($(`#kinerja_${year}_biaya`).val()) || 0;
+            var kurlog = ($(`#kinerja_${year}_kurlog`).val()) || 0;
+            var jaskug = ($(`#kinerja_${year}_jaskug`).val()) || 0;
+            var ritel = ($(`#kinerja_${year}_ritel`).val()) || 0;
+            var biaya = ($(`#kinerja_${year}_biaya`).val()) || 0;
 
             var kurlogResult = kurlog * 0.2;
             var jaskugResult = jaskug * 0.6;

@@ -65,8 +65,8 @@ class EntryController extends Controller
             'kinerja_2023_ritel' => 'required|numeric',
             'kinerja_2023_biaya' => 'required|numeric',
         ]);
-
         // Calculate kinerja totals
+        
         $data['kinerja_2021'] = ($request->input('kinerja_2021_kurlog') * 0.2 + $request->input('kinerja_2021_jaskug') * 0.6 + $request->input('kinerja_2021_ritel') * 0.2) - $request->input('kinerja_2021_biaya');
         $data['kinerja_2022'] = ($request->input('kinerja_2022_kurlog') * 0.2 + $request->input('kinerja_2022_jaskug') * 0.6 + $request->input('kinerja_2022_ritel') * 0.2) - $request->input('kinerja_2022_biaya');
         $data['kinerja_2023'] = ($request->input('kinerja_2023_kurlog') * 0.2 + $request->input('kinerja_2023_jaskug') * 0.6 + $request->input('kinerja_2023_ritel') * 0.2) - $request->input('kinerja_2023_biaya');

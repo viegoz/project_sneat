@@ -63,13 +63,18 @@ class DataController extends Controller
     }
 
     public function getPerihalByNdeInput(Request $request)
-    {
-        $data = Entry::where('nomor_nde', $request->nomor_nde)->first();
-        if ($data) {
-            return response()->json(['perihal' => $data->perihal, 'id' => $data->id]);
-        }
-        return response()->json([], 404);
+{
+    $data = Entry::where('nomor_nde', $request->nomor_nde)->first();
+    if ($data) {
+        return response()->json([
+            'perihal' => $data->perihal,
+            'tanggal_submit_surat' => $data->tanggal_submit_surat,
+            'keterangan' => $data->keterangan,
+            'id' => $data->id
+        ]);
     }
+    return response()->json([], 404);
+}
 
     public function submit(Request $request)
     {
