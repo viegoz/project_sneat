@@ -34,7 +34,7 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                        <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'assets/img/avatars/1.png') }}" alt="Profile Picture" class="rounded-circle" style="width: 60px; height: 60px;">
+                                        <img src="{{ asset(Auth::user()->profile_picture ? 'storage/' . Auth::user()->profile_picture : 'assets/img/avatars/1.png') }}" alt="Profile Picture" class="rounded-circle" style="width: 42px; height: 42px;">
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
